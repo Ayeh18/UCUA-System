@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile.backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb
+
+  frontend:
+    build:
+      context: ./src                   # 👈 folder where package.json and Dockerfile.frontend live
+      dockerfile: Dockerfile.frontend # 👈 now located *inside* ./src
+    ports:
+      - "3000:80"                      # 👈 if you're serving production build via NGINX
+    volumes:
+      - ./src:/app                    # 👈 only if you want live reload (for dev setup)
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
