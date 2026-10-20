@@ -1,0 +1,12 @@
+[
+  {
+    "staff_id": "DEMO001",
+    "password": "changeme123",
+    "name": "Demo Operator",
+    "designation": "Operator",
+    "department": "AFE",
+    "dept_qhse": "AFE",
+    "phone": "0123456789",
+    "email": "demo.operator@example.com"
+  }
+]
