@@ -1,0 +1,10 @@
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.32,<1.0
+pydantic[email]>=2.9,<3.0
+pydantic-settings>=2.6,<3.0
+python-multipart>=0.0.18
+psycopg2-binary>=2.9.10,<3.0
+bcrypt>=4.2,<6.0
+PyJWT>=2.10,<3.0
+# IANA timezone data for zoneinfo on Windows / slim containers
+tzdata>=2024.2
